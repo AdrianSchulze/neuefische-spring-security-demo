@@ -27,6 +27,10 @@ public class SecurityConfig {
                 HttpMethod.POST,
                 "/api/app-users"
             ).permitAll()
+            .antMatchers(
+                HttpMethod.POST,
+                "/api/cars"
+            ).hasRole("ADMIN")
             .anyRequest()
             .authenticated()
             .and()
@@ -47,7 +51,7 @@ public class SecurityConfig {
             return User.builder()
                 .username(appUser.getUsername())
                 .password(appUser.getPassword())
-                .roles("BASIC")
+                .roles(appUser.getRole())
                 .build();
         };
     }

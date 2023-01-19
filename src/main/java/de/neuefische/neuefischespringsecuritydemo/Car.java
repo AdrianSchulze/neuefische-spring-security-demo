@@ -12,4 +12,5 @@ public class Car {
     private String brand;
     private String model;
     private String color;
+    private String createdBy;
 }
